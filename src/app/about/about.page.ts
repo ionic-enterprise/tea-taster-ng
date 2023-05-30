@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthenticationService, SessionVaultService } from '@app/core';
+import { AuthenticationService } from '@app/core';
 import { PreferencesPage } from '@app/preferences/preferences.page';
 import { IonicModule, ModalController, NavController } from '@ionic/angular';
-import { tap } from 'rxjs';
 import packageInfo from '../../../package.json';
 
 @Component({
@@ -21,8 +20,7 @@ export class AboutPage {
   constructor(
     private auth: AuthenticationService,
     private modalController: ModalController,
-    private nav: NavController,
-    private sessionVault: SessionVaultService
+    private nav: NavController
   ) {
     this.author = packageInfo.author;
     this.name = packageInfo.name;
@@ -30,16 +28,9 @@ export class AboutPage {
     this.version = packageInfo.version;
   }
 
-  logout() {
-    this.auth
-      .logout()
-      .pipe(
-        tap(async () => {
-          await this.sessionVault.clear();
-          this.nav.navigateRoot(['/', 'login']);
-        })
-      )
-      .subscribe();
+  async logout() {
+    await this.auth.logout();
+    this.nav.navigateRoot(['/', 'login']);
   }
 
   async openPreferences() {

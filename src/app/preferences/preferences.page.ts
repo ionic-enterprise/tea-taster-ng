@@ -81,13 +81,12 @@ export class PreferencesPage implements OnInit {
     this.session.hideContentsInBackground(this.hideInBackground);
   }
 
-  logoutClicked() {
-    this.auth.logout().subscribe(() => {
-      this.session.clear();
-      this.session.setUnlockMode('SecureStorage');
-      this.navController.navigateRoot('/login');
-      this.modalController.dismiss();
-    });
+  async logoutClicked() {
+    await this.auth.logout();
+    this.session.clear();
+    this.session.setUnlockMode('SecureStorage');
+    this.navController.navigateRoot('/login');
+    this.modalController.dismiss();
   }
 
   private setVaultLockMode(): Promise<void> {

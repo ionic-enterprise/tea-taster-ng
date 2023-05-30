@@ -1,5 +1,4 @@
 import { Injectable, NgZone } from '@angular/core';
-import { Session } from '@app/models';
 import { PinDialogComponent } from '@app/pin-dialog/pin-dialog.component';
 import { Capacitor } from '@capacitor/core';
 import { Preferences } from '@capacitor/preferences';
@@ -12,7 +11,8 @@ import {
   Vault,
   VaultType,
 } from '@ionic-enterprise/identity-vault';
-import { ModalController, Platform } from '@ionic/angular';
+import { AuthResult } from '@ionic-enterprise/auth';
+import { ModalController } from '@ionic/angular';
 import { Observable, Subject } from 'rxjs';
 import { VaultFactoryService } from './vault-factory.service';
 
@@ -67,11 +67,11 @@ export class SessionVaultService {
     return this.lockedSubject.asObservable();
   }
 
-  async setSession(session: Session): Promise<void> {
+  async setSession(session: AuthResult): Promise<void> {
     await this.vault.setValue(sessionKey, session);
   }
 
-  async getSession(): Promise<Session | null> {
+  async getSession(): Promise<AuthResult | null> {
     return this.vault.getValue(sessionKey);
   }
 

@@ -1,8 +1,10 @@
-import { EMPTY } from 'rxjs';
-import { AuthenticationService } from './authentication.service';
-
 export const createAuthenticationServiceMock = () =>
-  jasmine.createSpyObj<AuthenticationService>('AuthenticationService', {
-    login: EMPTY,
-    logout: EMPTY,
+  jasmine.createSpyObj('AuthenticationService', {
+    login: Promise.resolve(),
+    logout: Promise.resolve(),
+    authenticationChange$: undefined,
+    getAuthResult: Promise.resolve(),
+    isAuthenticated: Promise.resolve(),
+    getAccessToken: Promise.resolve(),
+    refreshAuth: Promise.resolve(),
   });

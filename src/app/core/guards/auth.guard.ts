@@ -1,16 +1,16 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { SessionVaultService } from '../session-vault/session-vault.service';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 export const authGuard: CanActivateFn = async (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ): Promise<boolean> => {
-  const sessionVault = inject(SessionVaultService);
+  const authService = inject(AuthenticationService);
   const navController = inject(NavController);
 
-  if (await sessionVault.getSession()) {
+  if (await authService.isAuthenticated()) {
     return true;
   }
 

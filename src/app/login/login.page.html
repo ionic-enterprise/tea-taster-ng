@@ -11,36 +11,19 @@
       <ion-card-subtitle>Welcome to the Ionic Tea Taster Application</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      <form [formGroup]="loginForm">
-        <ion-input
-          label="E-Mail Address"
-          label-placement="floating"
-          id="email-input"
-          name="email"
-          type="email"
-          formControlName="email"
-          [errorText]="emailError"
-        ></ion-input>
-        <ion-input
-          label="Password"
-          label-placement="floating"
-          id="password-input"
-          name="password"
-          type="password"
-          formControlName="password"
-          [errorText]="passwordError"
-        ></ion-input>
-        <ion-button id="signin-button" expand="full" [disabled]="!loginForm.valid" (click)="signIn()"
-          >Sign In <ion-icon slot="end" name="log-in-outline"></ion-icon
-        ></ion-button>
-      </form>
+      <div class="auth-button-area">
+        <ion-button expand="block" color="aws" (click)="signIn()" data-testid="signin-button">
+          <ion-icon slot="end" name="logo-amazon"></ion-icon>
+          Sign In with AWS
+        </ion-button>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>
 
 <ion-toast
   [isOpen]="loginFailed"
-  message="Invalid Email or Password!"
+  message="Login failed!"
   color="danger"
   position="middle"
   [duration]="3000"
