@@ -45,7 +45,7 @@ export class LoginPage {
         take(1),
         tap(async (session) => {
           if (session) {
-            await this.sessionVault.set(session);
+            await this.sessionVault.setSession(session);
             this.nav.navigateRoot(['/']);
           } else {
             this.loginFailed = true;

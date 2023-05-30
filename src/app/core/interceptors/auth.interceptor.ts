@@ -8,7 +8,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private sessionVault: SessionVaultService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return from(this.sessionVault.get()).pipe(
+    return from(this.sessionVault.getSession()).pipe(
       tap((session) => {
         if (session && this.requestRequiresToken(request)) {
           request = request.clone({

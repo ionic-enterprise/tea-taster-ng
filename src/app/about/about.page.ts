@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService, SessionVaultService } from '@app/core';
-import { IonicModule, NavController } from '@ionic/angular';
+import { PreferencesPage } from '@app/preferences/preferences.page';
+import { IonicModule, ModalController, NavController } from '@ionic/angular';
 import { tap } from 'rxjs';
 import packageInfo from '../../../package.json';
 
@@ -19,6 +20,7 @@ export class AboutPage {
 
   constructor(
     private auth: AuthenticationService,
+    private modalController: ModalController,
     private nav: NavController,
     private sessionVault: SessionVaultService
   ) {
@@ -38,5 +40,14 @@ export class AboutPage {
         })
       )
       .subscribe();
+  }
+
+  async openPreferences() {
+    const dlg = await this.modalController.create({
+      backdropDismiss: false,
+      component: PreferencesPage,
+    });
+    dlg.present();
+    const { data } = await dlg.onDidDismiss();
   }
 }

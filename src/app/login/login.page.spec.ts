@@ -160,8 +160,8 @@ describe('LoginPage', () => {
           setInputValue(email, 'test@test.com');
           setInputValue(password, 'ThisIsMyPa$$W0rd');
           click(button);
-          expect(sessionVault.set).toHaveBeenCalledTimes(1);
-          expect(sessionVault.set).toHaveBeenCalledWith(session);
+          expect(sessionVault.setSession).toHaveBeenCalledTimes(1);
+          expect(sessionVault.setSession).toHaveBeenCalledWith(session);
         });
 
         it('navigates to the main page', fakeAsync(() => {

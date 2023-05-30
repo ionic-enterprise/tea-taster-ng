@@ -10,7 +10,7 @@ export const authGuard: CanActivateFn = async (
   const sessionVault = inject(SessionVaultService);
   const navController = inject(NavController);
 
-  if (await sessionVault.get()) {
+  if (await sessionVault.getSession()) {
     return true;
   }
 
