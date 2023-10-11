@@ -36,7 +36,7 @@
     "@capacitor/splash-screen": "^5.0.0",
     "@ionic-enterprise/auth": "^5.0.1",
     "@ionic-enterprise/identity-vault": "~5.12.0",
-    "@ionic/angular": "~7.4.2",
+    "@ionic/angular": "~7.5.0",
     "ionicons": "~7.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
