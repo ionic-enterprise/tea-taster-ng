@@ -1,5 +1,7 @@
 # Tea Taster
 
+**note:** this repo has been archived. please see the [Angular Tutorials and Demos Repo](https://github.com/ionic-enterprise/tutorials-and-demos-ng).
+
 An application for storing tea tasting notes. This application is the output of the <a href="" target="_blank">three day Ionic Framework Enterprise training.</a> It is also used as the starting point for some of our other product demos such as the demos for Identity Vault and Auth Connect.
 
 ## Building
